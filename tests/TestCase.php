@@ -7,7 +7,6 @@ use DateTime;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\ClientRepository;
 
 abstract class TestCase extends BaseTestCase
