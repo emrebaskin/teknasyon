@@ -7,6 +7,7 @@ use App\User;
 use App\Webservice\ErrorCodes;
 use App\Webservice\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -88,10 +89,6 @@ class AuthController extends Controller
 
         return Response::success(['user' => auth()->user(), 'access_token' => $accessToken]);
 
-    }
-
-    public function test () {
-        return Response::success(['status' => 'başarılı']);
     }
 
 }
