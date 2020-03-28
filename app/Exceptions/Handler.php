@@ -2,7 +2,11 @@
 
 namespace App\Exceptions;
 
+use App\Webservice\ErrorCodes;
+use App\Webservice\Response;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -50,6 +54,22 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+
+        if ($exception instanceof NotFoundHttpException) {
+            return Response::fail(
+                ErrorCodes::METHOD_NOT_EXISTS,
+                ErrorCodes::METHOD_NOT_EXISTS_MESSAGE
+            );
+        }
+
+
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return Response::fail(
+                ErrorCodes::METHOD_NOT_ALLOWED,
+                ErrorCodes::METHOD_NOT_ALLOWED_MESSAGE
+            );
+        }
+
         return parent::render($request, $exception);
     }
 }
