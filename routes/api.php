@@ -21,5 +21,6 @@ Route::group(['middleware' => ['throttle:60,1']], function () {
 });
 
 Route::group(['middleware' => ['auth:api', 'throttle:60,1']], function () {
-
+    Route::post('/categories', 'Api\CategoryController@index')->name('api.categories');
+    Route::post('/categories/{id}', 'Api\CategoryController@show')->where(['id' => '[0-9]+'])->name('api.category');
 });

@@ -28,7 +28,10 @@ abstract class ErrorCodes
     const PARAMETER_INVALID = 20;
     const PARAMETER_INVALID_MESSAGE = 'Invalid or missing parameters';
 
-    const SOUND_NOT_FOUND = 30;
+    const CATEGORY_NOT_FOUND = 30;
+    const CATEGORY_NOT_FOUND_MESSAGE = 'Category not found';
+
+    const SOUND_NOT_FOUND = 40;
     const SOUND_NOT_FOUND_MESSAGE = 'Sound not found';
 
     const METHOD_NOT_EXISTS = 404;
