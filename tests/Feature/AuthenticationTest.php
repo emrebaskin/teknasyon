@@ -10,7 +10,7 @@ class AuthenticationTest extends TestCase
 
     use WithFaker;
 
-    public $email = 'example@example.com';
+    public $email = 'user@teknasyon.com';
     public $password = '123456';
 
     public function testRegister()

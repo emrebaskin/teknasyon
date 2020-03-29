@@ -16,6 +16,10 @@ class Sound extends Model
         'category_id',
     ];
 
+    protected $hidden = [
+        'pivot'
+    ];
+
     /**
      * @return BelongsTo
      */
