@@ -6,4 +6,5 @@
 - Start servers ``docker-compose up``
 - Run migration ``docker-compose exec php php artisan migrate``
 - Run seed ``docker-compose exec php php artisan db:seed``
+- Create passport keys ``docker-compose exec php php artisan passport:keys``
 
