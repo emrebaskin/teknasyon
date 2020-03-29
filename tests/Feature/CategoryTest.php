@@ -10,7 +10,7 @@ class CategoryTest extends TestCase
     public function testCategories()
     {
 
-        $response = $this->post(route('api.categories'));
+        $response = $this->get(route('api.categories'));
 
         $response->assertStatus(200);
 
@@ -38,7 +38,7 @@ class CategoryTest extends TestCase
     public function testCategory()
     {
 
-        $response = $this->post(route('api.category', ['id' => 1]));
+        $response = $this->get(route('api.category', ['id' => 1]));
 
         $response->assertStatus(200);
 

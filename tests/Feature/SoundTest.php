@@ -10,7 +10,7 @@ class SoundTest extends TestCase
     public function testSound()
     {
 
-        $response = $this->post(route('api.sound', ['id' => 1]));
+        $response = $this->get(route('api.sound', ['id' => 1]));
 
         $response->assertJsonStructure([
             'errorCode',
