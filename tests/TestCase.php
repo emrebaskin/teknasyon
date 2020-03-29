@@ -3,11 +3,8 @@
 namespace Tests;
 
 use App\User;
-use DateTime;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Support\Facades\DB;
-use Laravel\Passport\ClientRepository;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -17,7 +14,6 @@ abstract class TestCase extends BaseTestCase
 
     protected $headers = [];
     protected $scopes = [];
-    protected $user;
 
     public function setUp(): void
     {
@@ -26,24 +22,25 @@ abstract class TestCase extends BaseTestCase
 
         $this->seed();
 
-        $clientRepository = new ClientRepository();
-        $client           = $clientRepository->createPersonalAccessClient(
-            null, 'Test Personal Access Client', 'http://localhost'
-        );
+        // $clientRepository = new ClientRepository();
+        // $client           = $clientRepository->createPersonalAccessClient(
+        //     null, 'Test Personal Access Client', 'http://localhost'
+        // );
+        //
+        // DB::table('oauth_personal_access_clients')->insert([
+        //     'client_id'  => $client->id,
+        //     'created_at' => new DateTime(),
+        //     'updated_at' => new DateTime(),
+        // ]);
+        //
+        // $this->user           = new User();
+        // $this->user->name     = 'Test User';
+        // $this->user->email    = 'example@example.com';
+        // $this->user->password = '123456';
+        // $this->user->save();
 
-        DB::table('oauth_personal_access_clients')->insert([
-            'client_id'  => $client->id,
-            'created_at' => new DateTime(),
-            'updated_at' => new DateTime(),
-        ]);
-
-        $this->user           = new User();
-        $this->user->name     = 'Test User';
-        $this->user->email    = 'example@example.com';
-        $this->user->password = '123456';
-        $this->user->save();
-
-        $token                          = $this->user->createToken('TestToken', $this->scopes)->accessToken;
+        $user                           = User::query()->findOrFail(1);
+        $token                          = $user->createToken('TestToken', $this->scopes)->accessToken;
         $this->headers['Accept']        = 'application/json';
         $this->headers['Authorization'] = 'Bearer '.$token;
     }
