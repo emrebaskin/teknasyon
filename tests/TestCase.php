@@ -14,13 +14,17 @@ abstract class TestCase extends BaseTestCase
     use CreatesApplication;
     use DatabaseMigrations;
 
+
     protected $headers = [];
     protected $scopes = [];
     protected $user;
 
     public function setUp(): void
     {
+
         parent::setUp();
+
+        $this->seed();
 
         $clientRepository = new ClientRepository();
         $client           = $clientRepository->createPersonalAccessClient(
