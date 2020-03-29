@@ -38,6 +38,7 @@ class CategoryController extends Controller
         try {
 
             $categories = Category::query()
+                ->with('sounds')
                 ->findOrFail($id);
 
         } catch (\Exception $e) {

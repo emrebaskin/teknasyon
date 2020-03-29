@@ -15,4 +15,12 @@ class Category extends Model
         'image_url',
     ];
 
+    /**
+     * @return HasMany
+     */
+    public function sounds()
+    {
+        return $this->hasMany(Sound::class);
+    }
+
 }
