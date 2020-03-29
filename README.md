@@ -8,3 +8,6 @@
 - Run seed ``docker-compose exec php php artisan db:seed``
 - Create passport keys ``docker-compose exec php php artisan passport:keys``
 
+
+#### Documentation
+- Api documentation here: [Postman Documentation](https://documenter.getpostman.com/view/1087162/SzYW4gFh?version=latest)
