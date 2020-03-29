@@ -18,7 +18,8 @@ class CreateSoundsTable extends Migration
             $table->string('name',191);
             $table->string('sound_url');
             $table->string('length',8);
-            $table->bigInteger('category_id');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
